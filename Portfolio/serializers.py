@@ -1,17 +1,12 @@
 from rest_framework import serializers
-from .models import Portfolio, PortfolioCategory, PortfolioDetail
-
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PortfolioCategory
-        fields = '__all__'
+from .models import Portfolio
 
 class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio
-        fields = '__all__'
+        fields = ['slug', 'image', 'title', 'company_name']
     
 class PortfolioDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PortfolioDetail
-        fields = '__all__'   
+        model = Portfolio
+        fields = '__all__'

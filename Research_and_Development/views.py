@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .models import ResearchAndDevelopment, ResearchAndDevelopmentDetail
+from .models import ResearchAndDevelopment
 from .serializers import RDSerializer, RDetailSerializer
 # Create your views here.
 @api_view(["GET"])
@@ -15,7 +15,7 @@ def RDevelopment(request):
 @api_view(["GET"])
 def RD_Detail(request, slug):
     try:
-        rd_detail = ResearchAndDevelopmentDetail.objects.get(slug=slug)
+        rd_detail = ResearchAndDevelopment.objects.get(slug=slug)
         serializer = RDetailSerializer(rd_detail)
         return Response(serializer.data)
     except:

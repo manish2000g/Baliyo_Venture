@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from . models import Service, ServiceDetail
+from . models import Service
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
-        fields = '__all__'
+        fields = ['image', 'title']
 
 class ServiceDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ServiceDetail
+        model = Service
         fields = '__all__'
 

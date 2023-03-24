@@ -22,6 +22,7 @@ class ArticleCategory(models.Model):
 
 
 class Article(models.Model):
+    slug = models.SlugField(unique=True)
     thumbnail_image = models.ImageField(upload_to='static/images')
     title = RichTextField(max_length=200)
     article_content = tinymce_models.HTMLField(max_length=500) 

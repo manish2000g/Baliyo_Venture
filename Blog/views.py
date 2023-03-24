@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from .models import Article, Authors
-from .serializers import ArticleSerializer, AuthorSerializer
+from .serializers import ArticleSerializer, AuthorSerializer,  ArticleDetailSerializer
 from rest_framework.decorators import api_view
+from rest_framework import status
 
 # Create your views here.
 @api_view(["GET"])
@@ -27,3 +28,14 @@ def Author(request):
     author = Authors.objects.all()
     serializer = AuthorSerializer(author, many = True)
     return Response(serializer.data)
+
+
+@api_view(["GET"])
+def Article_Detail(request, slug):
+    try:
+        article_detail = Article.objects.get(slug=slug)
+        serializer = ArticleDetailSerializer(article_detail)
+        return Response(serializer.data)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
