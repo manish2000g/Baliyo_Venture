@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Portfolio, PortfolioCategory
+from .models import Portfolio, PortfolioCategory, PortfolioDetail
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,4 +11,7 @@ class PortfolioSerializer(serializers.ModelSerializer):
         model = Portfolio
         fields = '__all__'
     
-    
+class PortfolioDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PortfolioDetail
+        fields = '__all__'   

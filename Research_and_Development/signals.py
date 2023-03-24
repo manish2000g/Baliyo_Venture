@@ -1,9 +1,11 @@
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-from .models import ResearchAndDevelopment
+from .models import ResearchAndDevelopment, ResearchAndDevelopmentDetail
 import os
 
 @receiver(pre_delete, sender=ResearchAndDevelopment)
+@receiver(pre_delete, sender=ResearchAndDevelopmentDetail)
+
 def delete_image_files(sender, instance, **kwargs):
     # Delete the image file from the file system
     if instance.image:

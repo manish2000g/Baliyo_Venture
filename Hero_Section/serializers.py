@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import HeroSections, ServicesSec, ServiceLists, PortfolioLists
+from .models import HeroSections, Testimonial
 
 class HeroSectionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,20 +7,7 @@ class HeroSectionSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 
-
-class ServiceSecSerializer(serializers.ModelSerializer):
+class TestimonialSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ServicesSec
-        fields = ('__all__')
-
-
-class ServiceListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ServiceLists
-        fields = '__all__'
-
-
-class PortfolioListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PortfolioLists
+        model = Testimonial
         fields = '__all__'

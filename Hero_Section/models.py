@@ -1,36 +1,29 @@
 from django.db import models
-from Portfolio.models import Portfolio, PortfolioCategory
-from Services.models import Service
+from ckeditor.fields import RichTextField
+
 class HeroSections(models.Model):
-    title = models.CharField(max_length=100)
+    title = RichTextField(max_length=200)
     hero_image = models.ImageField(upload_to= 'static/images')
 
     def __str__(self):
         return self.title
 
-class ServicesSec(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
-    link = models.URLField()
 
-    def __str__(self):
-        return self.service.title
+class Testimonial(models.Model):
+    TRUSTPILOT = 'Trustpilot'
+    GOOGLE = 'Google'
+    OTHERS = 'Others'
+    SOURCE_CHOICES = [
+        (TRUSTPILOT, 'Trustpilot'),
+        (GOOGLE, 'Google'),
+        (OTHERS, 'Others'),
+    ]
+    source = models.CharField(max_length=30, choices=SOURCE_CHOICES)
     
-class ServiceLists(models.Model):
-    image = models.ImageField(upload_to='static/images')
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
-    description = models.TextField()
-
     def __str__(self):
-        return self.service.title
-
-class PortfolioLists(models.Model):
-    image = models.ImageField(upload_to='static/images')
-    portfolio_title = models.ForeignKey(Portfolio, on_delete=models.CASCADE, null=True, blank=True, related_name='portfolio_lists_title')
-    category = models.ForeignKey(PortfolioCategory, on_delete=models.CASCADE, null=True, blank=True )
-    company = models.CharField(max_length=100, null=True, blank=True)
-
-    def __str__(self):
-        return self.portfolio_title.title
+        return self.source
     
 
+# testimonials : 
+# source [ Trustpilot, Google, Others ]
 
