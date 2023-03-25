@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-wfq&sy2+=vwql=q9lg5k_aq*em8-e*=a&1#8xw*_ce4zc_bn*i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['139.59.64.66']
 
 
 # Application definition
@@ -86,23 +86,23 @@ WSGI_APPLICATION = 'Baliyo_Venture.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'baliyo_venture',
-#         'USER': 'baliyo',
-#         'PASSWORD': 'baliyo',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }       
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'baliyo_venture',
+        'USER': 'baliyo',
+        'PASSWORD': 'baliyo',
+        'HOST': 'localhost',
+        'PORT': '',
+    }       
+}
 
 
 # Password validation
@@ -157,7 +157,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 # Default primary key field type
