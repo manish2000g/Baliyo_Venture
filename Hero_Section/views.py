@@ -5,9 +5,7 @@ from Services.serializers import ServiceSerializer
 from Portfolio.serializers import PortfolioSerializer
 from .serializers import HeroSectionSerializer, TestimonialSerializer
 from rest_framework.response import Response
-
-from rest_framework.decorators import (
-    api_view)
+from rest_framework.decorators import api_view
 
 
 @api_view(["GET"])
@@ -27,7 +25,6 @@ def HeroSection(request):
         'testimonials':test_serializer.data
         }
     )
-
 
 @api_view(["GET"])
 def ServiceList(request):

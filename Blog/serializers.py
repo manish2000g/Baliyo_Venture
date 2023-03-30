@@ -14,5 +14,5 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class ArticleDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Authors
+        model = Article
         fields = '__all__'

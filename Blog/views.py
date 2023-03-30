@@ -38,4 +38,6 @@ def Article_Detail(request, slug):
         return Response(serializer.data)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
     
