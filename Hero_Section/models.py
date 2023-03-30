@@ -10,6 +10,12 @@ class HeroSections(models.Model):
 
 
 class Testimonial(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    name = models.CharField(max_length=200,blank=True)
+    image = models.ImageField(blank=True)
+    review = models.TextField(blank=True)
+    rating = models.FloatField(default=5)
     TRUSTPILOT = 'Trustpilot'
     GOOGLE = 'Google'
     OTHERS = 'Others'
@@ -19,9 +25,9 @@ class Testimonial(models.Model):
         (OTHERS, 'Others'),
     ]
     source = models.CharField(max_length=30, choices=SOURCE_CHOICES)
-    
+
     def __str__(self):
-        return self.source
+        return self.name
     
 
 # testimonials : 

@@ -3,7 +3,7 @@ from Portfolio.models import Portfolio
 from Services.models import Service
 from Services.serializers import ServiceSerializer
 from Portfolio.serializers import PortfolioSerializer
-from .serializers import HeroSectionSerializer, TestimonialSerializer
+from .serializers import HeroSectionSerializer, TestimonialSerializer, ServiceListSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -29,7 +29,7 @@ def HeroSection(request):
 @api_view(["GET"])
 def ServiceList(request):
     service_list = Service.objects.all()
-    serializer = ServiceSerializer(service_list, many=True)
+    serializer = ServiceListSerializer(service_list, many=True)
     return Response(serializer.data)
 
 
