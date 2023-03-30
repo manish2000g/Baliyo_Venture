@@ -1,7 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from solo.models import SingletonModel
 
-class HeroSections(models.Model):
+class HeroSections(SingletonModel):
     title = RichTextField(max_length=200)
     hero_image = models.ImageField(upload_to= 'static/images')
 

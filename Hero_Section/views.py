@@ -10,21 +10,24 @@ from rest_framework.decorators import api_view
 
 @api_view(["GET"])
 def HeroSection(request):
-    hero_section = HeroSections.objects.all()
-    serializer = HeroSectionSerializer(hero_section, many=True)
+    try:
+        hero_section = HeroSections.objects.get()
+        serializer = HeroSectionSerializer(hero_section)
+    except HeroSections.DoesNotExist:
+        serializer = HeroSectionSerializer()
 
     services = Service.objects.all()
     ser_serializer = ServiceSerializer(services, many=True)
 
     testimonials = Testimonial.objects.all()
     test_serializer = TestimonialSerializer(testimonials, many=True)
-    return Response(
-        {
-        "herr_section":serializer.data,
-        "services":ser_serializer.data,
-        'testimonials':test_serializer.data
-        }
-    )
+
+    return Response({
+        "hero_section": serializer.data,
+        "services": ser_serializer.data,
+        "testimonials": test_serializer.data,
+    })
+
 
 @api_view(["GET"])
 def ServiceList(request):
