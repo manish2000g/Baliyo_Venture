@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-wfq&sy2+=vwql=q9lg5k_aq*em8-e*=a&1#8xw*_ce4zc_bn*i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['cd97-103-186-197-55.in.ngrok.io']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Hero_Section',
     'rest_framework',
     'Blog',
+    'corsheaders',
     'ckeditor',
     'Services',
     'Research_and_Development',
@@ -55,12 +56,19 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CSRF_TRUSTED_ORIGINS = ['https://cd97-103-186-197-55.in.ngrok.io']
+
+
 
 ROOT_URLCONF = 'Baliyo_Venture.urls'
 

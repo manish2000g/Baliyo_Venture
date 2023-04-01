@@ -17,7 +17,7 @@ def HeroSection(request):
         serializer = HeroSectionSerializer()
 
     services = Service.objects.all()
-    ser_serializer = ServiceSerializer(services, many=True)
+    ser_serializer = ServiceListSerializer(services, many=True)
 
     testimonials = Testimonial.objects.all()
     test_serializer = TestimonialSerializer(testimonials, many=True)
@@ -32,7 +32,7 @@ def HeroSection(request):
 @api_view(["GET"])
 def ServiceList(request):
     service_list = Service.objects.all()
-    serializer = ServiceListSerializer(service_list, many=True)
+    serializer = ServiceSerializer(service_list, many=True)
     return Response(serializer.data)
 
 
