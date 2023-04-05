@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-wfq&sy2+=vwql=q9lg5k_aq*em8-e*=a&1#8xw*_ce4zc_bn*i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8f51-103-186-197-55.in.ngrok.io']
-
+ALLOWED_HOSTS = ['528f-103-163-182-89.in.ngrok.io', 'https://lionfish-app-lb353.ondigitalocean.app/']
 
 # Application definition
 
@@ -38,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', 
+    'drf_yasg',
     'Hero_Section',
     'rest_framework',
     'Blog',
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'Services',
     'Research_and_Development',
     'Team',
-    'Portfolio'
+    'Portfolio',
+    
 ]
 
 
@@ -66,7 +67,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CSRF_TRUSTED_ORIGINS = ['https://8f51-103-186-197-55.in.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['https://528f-103-163-182-89.in.ngrok.io', 'https://lionfish-app-lb353.ondigitalocean.app']
 
 
 

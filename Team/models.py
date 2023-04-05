@@ -8,7 +8,7 @@ class Team(models.Model):
     description = models.TextField(max_length=500)
     post = models.CharField(max_length=100)
     email = models.EmailField(validators=[EmailValidator(message="Invalid email address")])
-    department = models.CharField(max_length=100, default='department')
+    department = models.CharField(max_length=100, help_text='Department of team member')
     facebook_url = models.URLField(blank=True)
     instagram_url = models.URLField(blank=True)
     linkedin_url = models.URLField(blank=True)

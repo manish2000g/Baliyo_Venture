@@ -14,14 +14,32 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Baliyo Venture",
+      default_version='v1',
+      description="Baliyo API",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@snippets.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny],
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Hero_Section.urls') ),
-    path('blog/', include('Blog.urls')),
-    path('service/', include('Services.urls')),
-    path('rdevelopment/', include('Research_and_Development.urls')),
-    path('team/',include('Team.urls')),
-    path('portfolio/', include('Portfolio.urls'))
+    path('api/', include('Hero_Section.urls') ),
+    path('api/', include('Blog.urls')),
+    path('api/', include('Services.urls')),
+    path('api/', include('Research_and_Development.urls')),
+    path('api/',include('Team.urls')),
+    path('api/', include('Portfolio.urls')),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
+

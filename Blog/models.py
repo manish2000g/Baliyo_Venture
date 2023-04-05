@@ -14,20 +14,27 @@ class Authors(models.Model):
     
 
 class ArticleCategory(models.Model):
-    c_name = models.CharField(max_length=50)
+    c_name = models.CharField(max_length=50, help_text='Artcile Category Name')
     description = models.CharField(max_length=200)
 
     def __str__(self):
         return self.c_name
 
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.tag_name
 
 class Article(models.Model):
     slug = models.SlugField(unique=True)
     thumbnail_image = models.ImageField(upload_to='static/images')
-    title = RichTextField(max_length=200)
-    article_content = tinymce_models.HTMLField(max_length=500) 
-    c_name = models.ForeignKey(ArticleCategory, on_delete=models.CASCADE)
+    thumbnail_image_alt_description = models.CharField(max_length=300)
+    title = models.CharField(max_length=300)
+    article_content = RichTextField(max_length=500) 
+    c_name = models.ForeignKey(ArticleCategory, on_delete=models.CASCADE, help_text='Article Category')
     author_name = models.ForeignKey(Authors, on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag)
     time_to_read = models.PositiveSmallIntegerField(default=False)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
